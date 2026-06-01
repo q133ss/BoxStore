@@ -1,9 +1,21 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\NoteController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => redirect()->route('notes.index'));
+
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [LoginController::class, 'create'])->name('login');
+    Route::post('/login', [LoginController::class, 'store']);
+
+    Route::get('/register', [RegisterController::class, 'create'])->name('register');
+    Route::post('/register', [RegisterController::class, 'store']);
+});
+
+Route::post('/logout', [LoginController::class, 'destroy'])->name('logout')->middleware('auth');
 
 Route::middleware('auth')->group(function () {
     Route::get('/notes', [NoteController::class, 'index'])->name('notes.index');
