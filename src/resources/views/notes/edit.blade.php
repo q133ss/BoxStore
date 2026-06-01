@@ -5,7 +5,6 @@
 
         <form action="{{ route('notes.update', $note) }}" method="POST" class="bg-white rounded-2xl border border-neutral-200 p-8">
             @csrf
-            @method('PUT')
             @include('notes._form')
         </form>
     </div>

@@ -23,7 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/notes', [NoteController::class, 'store'])->name('notes.store');
 
     Route::get('/notes/{note}/edit', [NoteController::class, 'edit'])->name('notes.edit')->can('update', 'note');
-    Route::put('/notes/{note}', [NoteController::class, 'update'])->name('notes.update')->can('update', 'note');
-    Route::delete('/notes/{note}', [NoteController::class, 'destroy'])->name('notes.destroy')->can('delete', 'note');
-    Route::patch('/notes/{note}/toggle-pin', [NoteController::class, 'togglePin'])->name('notes.togglePin')->can('update', 'note');
+    Route::post('/notes/{note}', [NoteController::class, 'update'])->name('notes.update')->can('update', 'note');
+    Route::post('/notes/{note}/delete', [NoteController::class, 'destroy'])->name('notes.destroy')->can('delete', 'note');
+    Route::post('/notes/{note}/toggle-pin', [NoteController::class, 'togglePin'])->name('notes.togglePin')->can('update', 'note');
 });

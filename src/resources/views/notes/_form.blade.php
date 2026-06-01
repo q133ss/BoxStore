@@ -1,6 +1,6 @@
 @php
     $colors = ['#7C6E5A', '#A8C84A', '#5BB8D4', '#C4567A', '#F0A500', '#2D2D2D'];
-    $currentColor = old('color', $note->color ?? '#7C6E5A');
+    $currentColor = old('color', $note->color ?? '#6366f1');
 @endphp
 
 <div x-data="{ color: '{{ $currentColor }}' }">

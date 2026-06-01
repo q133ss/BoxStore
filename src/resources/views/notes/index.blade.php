@@ -61,7 +61,7 @@
                                 @click="
                                     loading = true;
                                     fetch('{{ route('notes.togglePin', $note) }}', {
-                                        method: 'PATCH',
+                                        method: 'POST',
                                         headers: {
                                             'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]').content,
                                             'Accept': 'application/json',
@@ -95,7 +95,6 @@
                                 <a href="{{ route('notes.edit', $note) }}" class="text-xs text-neutral-400 hover:text-neutral-700 transition-colors leading-none">Изменить</a>
                                 <form action="{{ route('notes.destroy', $note) }}" method="POST" onsubmit="return confirm('Удалить заметку?')" style="display:contents">
                                     @csrf
-                                    @method('DELETE')
                                     <button type="submit" class="text-xs text-neutral-400 hover:text-red-400 transition-colors leading-none">Удалить</button>
                                 </form>
                             </div>
